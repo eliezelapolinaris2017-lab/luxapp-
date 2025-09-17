@@ -111,7 +111,7 @@ th{color:var(--muted);text-align:left}
           <div><label>Teléfono</label><input id="invPhone"></div>
           <div><label>Servicio</label><input id="invService" list="servicesList"></div>
           <div><label>Técnica</label><select id="invTech"></select></div>
-          <div><label>Método de pago</label><select id="invPay"><option>ATH Móvil</option><option>Cash</option><option>Tarjeta</option><option>devolucion/<option></select></div>
+          <div><label>Método de pago</label><select id="invPay"><option>ATH Móvil</option><option>Cash</option><option>Tarjeta</option><option>devolucion</option></select></div>
           <div><label>Monto</label><input id="invAmount" type="number" step="0.01"></div>
         </div>
         <div class="row" style="margin-top:.6rem">
@@ -138,6 +138,7 @@ th{color:var(--muted);text-align:left}
           <select id="invPeriodFilter" title="Filtrar por periodo">
             <option value="all">Todo</option>
             <option value="today">Hoy</option>
+             <option value="all">Esta semana</option>
             <option value="this_month">Este mes</option>
             <option value="this_year">Este año</option>
           </select>
@@ -148,6 +149,9 @@ th{color:var(--muted);text-align:left}
 
           <button class="btn small" id="btnTechHourPDF">🖨️ PDF Hora (Técnica)</button>
           <button class="btn small" id="btnTechHourCSV">📄 CSV Hora (Técnica)</button>
+
+          <button class="btn small" id="btnTechMonthPDF">🖨️ PDF Semana (Técnica)</button>
+          <button class="btn small" id="btnTechMonthCSV">📄 CSV Semana (Técnica)</button>
 
           <button class="btn small" id="btnTechMonthPDF">🖨️ PDF Mes (Técnica)</button>
           <button class="btn small" id="btnTechMonthCSV">📄 CSV Mes (Técnica)</button>
@@ -309,6 +313,7 @@ function groupInvoices(mode, opts={}){
 
 function exportInvGroupedCSV(mode, opts={}){
   const nice = mode === 'day' ? 'Día'
+             : mode === 'week' ? 'Semana'
              : mode === 'hour' ? 'Hora'
              : mode === 'month' ? 'Mes'
              : mode === 'year' ? 'Año'
@@ -327,6 +332,7 @@ function exportInvGroupedCSV(mode, opts={}){
 
 function exportInvGroupedPDF(mode, opts={}){
   const nice = mode === 'day' ? 'Día'
+             : mode === 'week' ? 'Semana'
              : mode === 'hour' ? 'Hora'
              : mode === 'month' ? 'Mes'
              : mode === 'year' ? 'Año'
